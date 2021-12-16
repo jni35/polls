@@ -9,12 +9,20 @@
 <body>
     <div id="container">
         <section>
-            <h2>{{ question.question_text }}</h2>
-            <ul>
+            <form action="{% url 'poll:vote' question.id %}" method="post">
+                {% csrf_token %}
+                <h2>{{ question.question_text }}</h2>
+                {% if error %}
+                <p>{{ error }}</p>
+                {% endif %}
                 {% for choice in question.choice_set.all %}
-                <li>{{ choice.choice_text }}</li>
+                <p>
+                    <input type="radio" name="choice" id="choice" value="{{ choice.id }}">
+                    <label for="choice">{{ choice.choice_text }}</label>
+                </p>
                 {% endfor %}
-            </ul>
+                <p><input type="submit" value="투표"></p>
+            </form>
         </section>
     </div>
 </body>

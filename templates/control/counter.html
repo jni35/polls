@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>반복문 index 예제</title>
+</head>
+<body>
+    <h2>탬플릿 태그 - forloop.counter 예제</h2>
+<!--    forloop.counter는 번호를 붙일때 사용한다.
+        for i in range(0 n)과 유사하다. -->
+<!--    forloop.counter0은 0번 부터 시작된다. -->
+    <ul>
+        {% for item in items %}
+            <li>{{ forloop.counter0 }} -- {{ item }}</li>
+    <!--    <li>{{ forloop.counter }} &#45;&#45; {{ item }}</li>-->
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for item in items %}
+            {% if forloop.coounter < 3 %}
+            <li>{{ forloop.counter }}번째 줄입니다.</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <h3>내장 탬플릿 필터(filter) 태그 사용하기</h3>
+    <p>forloop.counter|add:5</p>
+    <ul>
+        {% for item in items %}
+            {% if forloop.counter < 3 %}
+            <li>{{ forloop.counter|add:5 }}번째 줄입니다.</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+
+
+</body>
+</html>
