@@ -6,6 +6,5 @@ app_name = 'poll'  #app_name변수에 poll앱 저장
 urlpatterns = [
     path('', views.index, name='index'), # 127.0.0.1:8000/poll/
     path('<int:question_id>/', views.detail, name='detail'),
-    path('', views.index),
     path('<int:question_id>/vote/', views.vote, name='vote'),
 ]

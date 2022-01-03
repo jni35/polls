@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>설문 상세 페이지</title>
-    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">-->
+    <link rel="stylesheet" href="{% static 'poll/css/bootstrap.css' %}">
 </head>
 <body>
-    <div id="container">
+    <div class="container">
         <section>
-            <form action="{% url 'poll:vote' question.id %}" method="post">
+            <div class="jumbotron">
+                <div class="text-center">
+                    <h1 >투표하기</h1>
+                </div>
+            </div>
+            <h4 style="margin: 20px 280px;">{{ question.question_text }}</h4>
+            <form action="{% url 'poll:vote' question.id %}" method="post"
+                style="width:500px; margin:0 auto;">
                 {% csrf_token %}
-                <h2>{{ question.question_text }}</h2>
                 {% if error %}
-                <p>{{ error }}</p>
+                    <p style="font-size:1.2rem;">{{ error }}</p>
                 {% endif %}
                 {% for choice in question.choice_set.all %}
-                <p>
+                <p style="font-size:1.2rem;">
                     <input type="radio" name="choice" id="choice" value="{{ choice.id }}">
                     <label for="choice">{{ choice.choice_text }}</label>
                 </p>

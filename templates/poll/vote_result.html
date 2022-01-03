@@ -4,18 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>투표 결과</title>
-    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">-->
+    <link rel="stylesheet" href="{% static 'poll/css/bootstrap.css' %}">
 </head>
 <body>
-    <div id="container">
-    <h2>{{ question.question_text }}</h2>
-    <ul>
-        {% for choice in question.choice_set.all %}
-        <li>
-            {{ choice.choice_text }} -- {{ choice.votes }}votes
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <section>
+            <div class="jumbotron">
+                <div class="text-center">
+                    <h1 >투표결과</h1>
+                </div>
+            </div>
+            <h4 style="margin: 20px 280px;">{{ question.question_text }}</h4>
+            <ul style="width:500px; margin:0 auto";>
+            {% for choice in question.choice_set.all %}
+            <li style="margin: 20px;">
+                <p style="font-size:1.2rem;">{{ choice.choice_text }} -- {{ choice.votes }}votes</p>
+            </li>
+            {% endfor %}
+            </ul>
+        </section>
     </div>
 </body>
 </html>

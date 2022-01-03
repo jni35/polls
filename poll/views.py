@@ -28,3 +28,4 @@ def vote(request, question_id):
         sel_choice.votes = sel_choice.votes + 1
         sel_choice.save()   # db에 저장
         return render(request, 'poll/vote_result.html', {'question':question})
+
